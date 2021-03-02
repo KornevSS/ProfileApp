@@ -19,5 +19,5 @@ struct Entity: Decodable {
 
 struct EntityCount: Decodable {
     let ul_count: Int?                    // Кол-во юрлиц контрагента
-    let ul: [Entity]?               // Массив юрлиц
+    let ul: [Entity]?                     // Массив юрлиц
 }
