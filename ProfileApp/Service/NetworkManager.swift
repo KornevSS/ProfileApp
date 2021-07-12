@@ -8,32 +8,33 @@
 import Foundation
 
 class NetworkManager {
-        
     
-//    static let shared = NetworkManager()
-//    
-//    
-//    func fetchData(with taxIdentificationNumber: String) -> Data {
-//        guard let url = URL(string: "https://www.rusprofile.ru/ajax.php?&query=\(taxIdentificationNumber)&action=search") else { return }
-//        
-//        URLSession.shared.dataTask(with: url) { (data, _, _) in
-//            guard let data = data else { return }
-//            
-//            do {
-//                let course = try JSONDecoder().decode(EntityCount.self, from: data)
-//                print(course)
-//                //            DispatchQueue.main.async {
-//                //                self.successAlert()
-//                //            }
-//            } catch let error {
-//                print(error)
-//                //            DispatchQueue.main.async {
-//                //                self.failedAlert()
-//                //            }
-//            }
-//            
-//        }.resume()
-//    }
+    static let shared = NetworkManager()
+    
+    func fetchData(jsonURL: String, _ completion: @escaping ([Entity]?) -> Void) {
+        
+        guard let url = URL(string: jsonURL) else { return }
+                
+        URLSession.shared.dataTask(with: url) { (data, _, error) in
+       
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            
+            guard let data = data else { return }
+            
+            do {
+                let webSiteDescription = try JSONDecoder().decode(WebsiteDescription.self, from: data)
+
+                DispatchQueue.main.async {
+                    let entities = webSiteDescription.ul
+                    completion(entities)
+                }
+                
+            } catch let jsonError {
+                print("Ошибка получения данных:", jsonError)
+            }
+        }.resume()
+    }
     
 }
-

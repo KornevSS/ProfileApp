@@ -7,16 +7,15 @@
 
 import UIKit
 
-class OrganizationDetailsViewController: UIViewController {
+class EntityDetailsViewController: UIViewController {
 
-    @IBOutlet var organizationNameLabel: UILabel!
-    
-    var organizationName: String!
-    
+    @IBOutlet var entityInfoTextView: UITextView!
+    var entity: Entity!
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        organizationNameLabel.text = organizationName
+        entityInfoTextView.text = entity.description
     }
 
 }
+
