@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol NewCompanyViewControllerDelegate {
-    func newCompany(_ companies: [Suggestion])
-}
-
-class CompanyListViewController: UIViewController, NewCompanyViewControllerDelegate {
+class CompanyListViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     
@@ -30,11 +26,6 @@ class CompanyListViewController: UIViewController, NewCompanyViewControllerDeleg
        searchBar.isTranslucent = false
        searchBar.delegate = self
        navigationItem.titleView = searchBar
-    }
-    
-    func newCompany(_ companies: [Suggestion]) {
-        companyList.append(contentsOf: companies)
-        tableView.reloadData()
     }
 
 }
@@ -59,7 +50,7 @@ extension CompanyListViewController: UITableViewDataSource, UITableViewDelegate 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let companyCoordsViewController = storyboard.instantiateViewController(withIdentifier: "CompanyCoordsVC") as? CompanyCoordsViewController else { return }
+        guard let companyCoordsViewController = storyboard.instantiateViewController(withIdentifier: "CompanyCoordsVC") as? CompanyDetailsViewController else { return }
         
         companyCoordsViewController.company = companyList[indexPath.row]
 //        entityDetailsViewController.modalPresentationStyle = .fullScreen
@@ -85,3 +76,27 @@ extension CompanyListViewController: UISearchBarDelegate {
     }
     
 }
+
+
+// MARK: - Alert
+
+//extension NewCompanyViewController {
+//
+//    private func alert(completionHandler: @escaping () -> Void, title: String, message: String) {
+//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+//        let action = UIAlertAction(title: "OK", style: .default) {_ in
+//            completionHandler()
+//        }
+//        alert.addAction(action)
+//        present(alert, animated: true)
+//    }
+//
+//    private func successAlert(completionHandler: @escaping () -> Void) {
+//        alert(completionHandler: completionHandler, title: "Успешная загрузка ✅", message: "Добавлено в историю поиска")
+//    }
+//
+//    private func failedAlert(completionHandler: @escaping () -> Void) {
+//        alert(completionHandler: completionHandler, title: "Компания не найдена 🚫", message: "Введите корректный запрос")
+//    }
+//
+//}
