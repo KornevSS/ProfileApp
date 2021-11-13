@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1167" y="-154"/>
+            <point key="canvasLocation" x="-1172" y="-119"/>
         </scene>
         <!--New Company View Controller-->
         <scene sceneID="UvR-cl-kbw">
@@ -150,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKL-wQ-YTl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-441" y="-161"/>
+            <point key="canvasLocation" x="1117" y="-154"/>
         </scene>
         <!--Данные организации-->
         <scene sceneID="Q0r-NT-Vdg">
@@ -160,13 +160,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKo-fY-J13">
-                                <rect key="frame" x="16" y="640" width="382" height="206"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Контрагент:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfQ-fH-0ll">
                                 <rect key="frame" x="150" y="37" width="115" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -203,7 +196,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nX0-Cm-pxe">
-                                <rect key="frame" x="16" y="147" width="378" height="427"/>
+                                <rect key="frame" x="16" y="147" width="378" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="bs5-hK-Yyh" detailTextLabel="sKL-dl-kdZ" style="IBUITableViewCellStyleValue1" id="OdR-Do-m4D">
@@ -233,12 +226,23 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKo-fY-J13">
+                                <rect key="frame" x="16" y="345" width="382" height="206"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="NKo-fY-J13" secondAttribute="height" multiplier="191:103" id="QBw-Eh-deE"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="86r-Pz-aq4"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="NKo-fY-J13" firstAttribute="centerX" secondItem="Ibp-cM-LK6" secondAttribute="centerX" id="4Ud-zB-9mn"/>
                             <constraint firstItem="NKo-fY-J13" firstAttribute="leading" secondItem="86r-Pz-aq4" secondAttribute="leading" constant="16" id="FBu-mX-Gi5"/>
-                            <constraint firstItem="86r-Pz-aq4" firstAttribute="bottom" secondItem="NKo-fY-J13" secondAttribute="bottom" constant="16" id="npi-AF-7O6"/>
+                            <constraint firstItem="NKo-fY-J13" firstAttribute="centerY" secondItem="Ibp-cM-LK6" secondAttribute="centerY" id="Jve-o5-P9W"/>
                             <constraint firstItem="86r-Pz-aq4" firstAttribute="trailing" secondItem="NKo-fY-J13" secondAttribute="trailing" constant="16" id="wQs-Ds-jRk"/>
                         </constraints>
                     </view>
@@ -249,7 +253,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iqL-0g-6Uc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-115.94202898550725" y="569.19642857142856"/>
+            <point key="canvasLocation" x="-400.00000000000006" y="-119.19642857142857"/>
+        </scene>
+        <!--Company Coords View Controller-->
+        <scene sceneID="tpg-EN-Quy">
+            <objects>
+                <viewController storyboardIdentifier="CompanyCoordsVC" id="1Le-mh-ks2" customClass="CompanyCoordsViewController" customModule="ProfileApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HoF-XF-uO6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="gcL-OS-zc1">
+                                <rect key="frame" x="16" y="366" width="382" height="480"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="gcL-OS-zc1" secondAttribute="height" multiplier="191:240" id="fed-It-Nkh"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="24"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </mapView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="xdk-pz-0ir"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gcL-OS-zc1" firstAttribute="leading" secondItem="xdk-pz-0ir" secondAttribute="leading" constant="16" id="ae9-5N-xBL"/>
+                            <constraint firstItem="xdk-pz-0ir" firstAttribute="bottom" secondItem="gcL-OS-zc1" secondAttribute="bottom" constant="16" id="ukn-6A-Sin"/>
+                            <constraint firstItem="xdk-pz-0ir" firstAttribute="trailing" secondItem="gcL-OS-zc1" secondAttribute="trailing" constant="16" id="zFX-eZ-8st"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="companyCoordinates" destination="gcL-OS-zc1" id="92n-mF-tOI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UK0-Dz-hJd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="351" y="-119"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DoN-Uc-ddx">

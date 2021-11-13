@@ -13,12 +13,21 @@ protocol NewCompanyViewControllerDelegate {
 
 class CompanyListViewController: UIViewController, NewCompanyViewControllerDelegate {
 
+    @IBOutlet var tableView: UITableView!
+    
+    private var companyList: [Suggestion] = []
+    private lazy var searchBar: UISearchBar = UISearchBar()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
        searchBar.searchBarStyle = UISearchBar.Style.default
-       searchBar.placeholder = "Search..."
+       searchBar.placeholder = "ИНН или название фирмы"
        searchBar.sizeToFit()
        searchBar.isTranslucent = false
- //      searchBar.backgroundImage = UIImage()
        searchBar.delegate = self
        navigationItem.titleView = searchBar
     }
@@ -27,27 +36,10 @@ class CompanyListViewController: UIViewController, NewCompanyViewControllerDeleg
         companyList.append(contentsOf: companies)
         tableView.reloadData()
     }
-    
 
-    @IBOutlet var tableView: UITableView!
-    
-    lazy var searchBar: UISearchBar = UISearchBar()
-    
-    var companyList: [Suggestion] = []
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let newCompanyVC = segue.destination as! NewCompanyViewController
-        newCompanyVC.delegate = self
-    }
-    
 }
 
-extension CompanyListViewController: UITableViewDataSource {
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        tableView.reloadData()
-    }
+extension CompanyListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         companyList.count
@@ -63,32 +55,33 @@ extension CompanyListViewController: UITableViewDataSource {
 
         return cell
     }
-}
-
-extension CompanyListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let companyDetailsViewController = storyboard.instantiateViewController(withIdentifier: "CompanyDetailsVC") as? CompanyDetailsViewController else { return }
+        guard let companyCoordsViewController = storyboard.instantiateViewController(withIdentifier: "CompanyCoordsVC") as? CompanyCoordsViewController else { return }
         
-        companyDetailsViewController.company = companyList[indexPath.row]
+        companyCoordsViewController.company = companyList[indexPath.row]
 //        entityDetailsViewController.modalPresentationStyle = .fullScreen
 //        entityDetailsViewController.modalTransitionStyle = .flipHorizontal
-        present(companyDetailsViewController, animated: true, completion: nil)
+        present(companyCoordsViewController, animated: true, completion: nil)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
 
 extension CompanyListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange textSearched: String) {
-        
-        NetworkManager.shared.fetchData(with: textSearched) { [self] companies in
+    
+    private func getListOfCompanies(with searchText: String) {
+        NetworkManager.shared.fetchData(with: searchText) { [self] companies in
             guard let companies = companies else { return }
             self.companyList = companies
         }
-        
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange textSearched: String) {
+        getListOfCompanies(with: textSearched)
         tableView.reloadData()
     }
+    
 }

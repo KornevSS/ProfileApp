@@ -5,7 +5,6 @@
 //  Created by Сергей Корнев on 01.08.2021.
 //
 
-import Foundation
 
 // MARK: - Company
 struct DataResponse: Decodable {
@@ -32,23 +31,19 @@ struct SuggestionData: Decodable {
     let ogrn: String?               // ОГРН
     let ogrn_date: Double?          // Дата выдачи
 
-    let name: Name?
+    let name: Name?                 // Название организации
     
-    let fio: FIO?
+    let fio: FIO?                   // ФИО ИП
 
-    let okato: String?
-    let oktmo: String?
-    let okpo: String?
-    let okogu: String?
-    let okfs: String?
-    let okved: String?
-    let okved_type: String?
-    let opf: Opf?
-    let address: Address?
-    
-    var description: String {
-        return ""
-    }
+    let okato: String?              // Код ОКАТО
+    let oktmo: String?              // Код ОКТМО
+    let okpo: String?               // Код ОКПО
+    let okogu: String?              // Код ОКОГУ
+    let okfs: String?               // Код ОКФС
+    let okved: String?              // Код ОКВЭД
+    let okved_type: String?         // Версия справочника ОКВЭД
+    let opf: Opf?                   // Организационно-правовая форма
+    let address: Address?           // Адрес организации
 }
 
 
@@ -61,35 +56,23 @@ struct FIO: Decodable {
 
 // MARK: - Address
 struct Address: Decodable {
-    let value: String?
-    let unrestricted_value: String?
-    let data: AddressData?
+    let value: String?              // Адрес одной строкой
+    let unrestricted_value: String? // Адрес одной строкой (полный, с индексом)
+    let data: AddressData?          // Гранулярный адрес
 }
 
 // MARK: - AddressData
 struct AddressData: Decodable {
-    let source: String?
-    let qc: String?
+    let source: String?             // Адрес как в ЕГРЮЛ
+    let qc: String?                 // Код проверки адреса
     let postal_code: String?
     let country: String?
     let federal_district: String?
     let region_with_type: String?
-//    let regionType: String
-//    let regionTypeFull: String
-//    let region: String
     let city_with_type: String?
-//    let cityType: String
-//    let cityTypeFull: String
-//    let city: String
     let city_area: String?
     let city_district_with_type: String?
-//    let cityDistrictType: String
-//    let cityDistrictTypeFull: String
-//    let cityDistrict: String
     let street_with_type: String?
-//    let street_type: String
-//    let street_type_full: String
-//    let street: String
     let okato: String?
     let oktmo: String?
     let timezone: String?

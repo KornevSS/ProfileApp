@@ -11,6 +11,8 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     
+    private init() {}
+    
     func fetchData(with query: String, completion: @escaping ([Suggestion]?) -> Void) {
 
         var urlComponents = URLComponents(string: Constants.baseAPIURL)
@@ -35,11 +37,6 @@ class NetworkManager {
             guard let data = data else { return }
             do {
                 let result = try JSONDecoder().decode(DataResponse.self, from: data)
-
-//        print(result)
-//        let json = try JSONSerialization.jsonObject(with: data, options: .fragmentsAllowed)
-//        print(json)
-                                
                 DispatchQueue.main.async {
                     let companies = result.suggestions
                     guard let companiesCount = companies?.count else { return }
