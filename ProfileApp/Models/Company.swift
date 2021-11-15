@@ -47,14 +47,16 @@ struct SuggestionData: Decodable {
     
     var description: String {
         let description = """
-        Наименование: \(name?.short_with_opf ?? "-")
+        Наименование: \(name?.full_with_opf ?? "-")
         Статус: \(state?.description ?? "-")
         Руководитель: \(management?.name ?? "-")
-        Должность: \(management?.post ?? "Предприниматель")
+        Должность: \(management?.post ?? "-")
         ИНН: \(inn ?? "-")
         КПП: \(kpp ?? "-")
         ОКВЭД: \(okved ?? "-")
         ОКПО: \(okpo ?? "-")
+        Адрес: \(address?.value ?? "")
+        Адрес в ЕГРЮЛ: \(address?.data?.source ?? "")
         """
         return description
     }
@@ -90,15 +92,7 @@ struct AddressData: Decodable {
     let timezone: String?
     let geo_lat: String?            // Широта
     let geo_lon: String?            // Долгота
-    let metro: [Metro]?             // Метро, если есть
     let qcGeo: String?
-}
-
-// MARK: - Metro
-struct Metro: Decodable {       // Метро
-    let name: String?           // Название станции
-    let line: String?           // Линия
-    let distance: Double?       // Расстояние до
 }
 
 // MARK: - Management

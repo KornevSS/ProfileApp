@@ -19,8 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2GS-lS-zZZ">
-                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="UV5-yK-xIq" detailTextLabel="4k0-YH-xNO" imageView="ICd-Lm-1TG" style="IBUITableViewCellStyleSubtitle" id="PpD-dA-SnD">
                                         <rect key="frame" x="0.0" y="44.5" width="414" height="55.5"/>
@@ -89,43 +88,56 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sHj-XY-C14">
-                                <rect key="frame" x="16" y="171" width="382" height="548"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <rect key="frame" x="16" y="171" width="382" height="564"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <integer key="value" value="24"/>
+                                        <integer key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zic-Qv-6Vq">
-                                <rect key="frame" x="128" y="774" width="158" height="49"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zic-Qv-6Vq">
+                                <rect key="frame" x="159.5" y="774" width="95.5" height="49"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="49" id="BfT-Hb-m88"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="95.5" id="wmg-eb-i8B"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal">
+                                <state key="normal" title="Карта">
                                     <imageReference key="image" image="mappin.and.ellipse" catalog="system" symbolScale="large"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <integer key="value" value="20"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="reX-tW-OMx" kind="presentation" identifier="showMapVC" id="OXS-M3-kkj"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Информация о компании" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BX8-EV-vZP">
+                                <rect key="frame" x="76.5" y="137.5" width="261" height="25.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="xdk-pz-0ir"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="xdk-pz-0ir" firstAttribute="top" secondItem="BX8-EV-vZP" secondAttribute="top" constant="2.5" id="8dQ-3b-6vb"/>
                             <constraint firstItem="sHj-XY-C14" firstAttribute="leading" secondItem="xdk-pz-0ir" secondAttribute="leading" constant="16" id="HZw-QK-Uhu"/>
                             <constraint firstItem="Zic-Qv-6Vq" firstAttribute="centerX" secondItem="HoF-XF-uO6" secondAttribute="centerX" id="MzU-vY-yoQ"/>
-                            <constraint firstItem="Zic-Qv-6Vq" firstAttribute="leading" secondItem="xdk-pz-0ir" secondAttribute="leading" constant="128" id="NLI-s2-nNs"/>
                             <constraint firstItem="xdk-pz-0ir" firstAttribute="bottom" secondItem="Zic-Qv-6Vq" secondAttribute="bottom" constant="39" id="YH8-vk-Ver"/>
-                            <constraint firstItem="Zic-Qv-6Vq" firstAttribute="top" secondItem="sHj-XY-C14" secondAttribute="bottom" constant="55" id="fgb-fq-oPL"/>
+                            <constraint firstItem="sHj-XY-C14" firstAttribute="top" secondItem="BX8-EV-vZP" secondAttribute="bottom" constant="8" symbolic="YES" id="af1-qx-7jZ"/>
+                            <constraint firstItem="Zic-Qv-6Vq" firstAttribute="top" secondItem="sHj-XY-C14" secondAttribute="bottom" constant="39" id="fgb-fq-oPL"/>
                             <constraint firstItem="xdk-pz-0ir" firstAttribute="trailing" secondItem="sHj-XY-C14" secondAttribute="trailing" constant="16" id="jM5-zA-d6m"/>
-                            <constraint firstItem="xdk-pz-0ir" firstAttribute="trailing" secondItem="Zic-Qv-6Vq" secondAttribute="trailing" constant="128" id="pIk-Us-sUt"/>
+                            <constraint firstItem="BX8-EV-vZP" firstAttribute="centerX" secondItem="HoF-XF-uO6" secondAttribute="centerX" id="unt-rw-L6t"/>
                             <constraint firstItem="sHj-XY-C14" firstAttribute="top" secondItem="xdk-pz-0ir" secondAttribute="top" constant="31" id="vRn-BO-528"/>
                         </constraints>
                     </view>
@@ -218,6 +230,9 @@
                                 <state key="normal">
                                     <imageReference key="image" image="arrow.right.doc.on.clipboard" catalog="system" symbolScale="large"/>
                                 </state>
+                                <connections>
+                                    <action selector="copyToClipboardButtonClick" destination="reX-tW-OMx" eventType="touchUpInside" id="oeJ-Jk-wwO"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Gtk-HE-1Wg"/>
@@ -237,6 +252,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="aR6-LG-cMm"/>
                     <connections>
+                        <outlet property="latitudeLabel" destination="SKY-9P-ipk" id="6c4-gP-TH4"/>
+                        <outlet property="longitudeLabel" destination="Xn3-fR-dyb" id="v1k-5I-i8S"/>
                         <outlet property="mapView" destination="9LU-XJ-xfp" id="zYO-Pz-rmx"/>
                     </connections>
                 </viewController>
@@ -254,6 +271,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -20,13 +20,25 @@ class CompanyListViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         setupSearchBar()
         navigationItem.titleView = searchBar
     }
+
+// MARK: - Navigation
+        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "showDetailsVC" else { return }
+        guard let destination = segue.destination as? CompanyDetailsViewController else { return }
+        guard let selectedItemIndex = tableView.indexPathForSelectedRow?.row else { return }
+        destination.company = companyList[selectedItemIndex]
+    }
+    
+// MARK: - Private methods
     
     private func setupSearchBar() {
         searchBar.searchBarStyle = UISearchBar.Style.default
-        searchBar.placeholder = "ИНН или название фирмы"
+        searchBar.placeholder = "Введите ИНН или название"
         searchBar.sizeToFit()
         searchBar.isTranslucent = false
         searchBar.delegate = self
@@ -39,15 +51,6 @@ class CompanyListViewController: UIViewController {
         }
     }
 
-    
-// MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "showDetailsVC" else { return }
-        guard let destination = segue.destination as? CompanyDetailsViewController else { return }
-        guard let selectedItemIndex = tableView.indexPathForSelectedRow?.row else { return }
-        destination.company = companyList[selectedItemIndex]
-    }
 }
 
 // MARK: - TableView

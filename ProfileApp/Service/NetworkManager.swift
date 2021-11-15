@@ -40,7 +40,6 @@ class NetworkManager {
                 DispatchQueue.main.async {
                     let companies = result.suggestions
                     guard let companiesCount = companies?.count else { return }
-                    print(companiesCount)
                     completion(companiesCount != 0 ? companies : nil)
                 }
                 
@@ -49,7 +48,6 @@ class NetworkManager {
                 completion(nil)
             }
         }.resume()
-        
     }
     
 }
