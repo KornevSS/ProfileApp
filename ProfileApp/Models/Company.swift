@@ -44,11 +44,25 @@ struct SuggestionData: Decodable {
     let okved_type: String?         // Версия справочника ОКВЭД
     let opf: Opf?                   // Организационно-правовая форма
     let address: Address?           // Адрес организации
+    
+    var description: String {
+        let description = """
+        Наименование: \(name?.short_with_opf ?? "-")
+        Статус: \(state?.description ?? "-")
+        Руководитель: \(management?.name ?? "-")
+        Должность: \(management?.post ?? "Предприниматель")
+        ИНН: \(inn ?? "-")
+        КПП: \(kpp ?? "-")
+        ОКВЭД: \(okved ?? "-")
+        ОКПО: \(okpo ?? "-")
+        """
+        return description
+    }
 }
 
 
 // MARK: - FIO
-struct FIO: Decodable {
+struct FIO: Decodable {             // ФИО ИП
     let name: String?
     let surname: String?
     let patronymic: String?
@@ -58,15 +72,13 @@ struct FIO: Decodable {
 struct Address: Decodable {
     let value: String?              // Адрес одной строкой
     let unrestricted_value: String? // Адрес одной строкой (полный, с индексом)
-    let data: AddressData?          // Гранулярный адрес
+    let data: AddressData?          // Адресные данные
 }
 
 // MARK: - AddressData
 struct AddressData: Decodable {
     let source: String?             // Адрес как в ЕГРЮЛ
-    let qc: String?                 // Код проверки адреса
-    let postal_code: String?
-    let country: String?
+    let country: String?            // Страна
     let federal_district: String?
     let region_with_type: String?
     let city_with_type: String?
@@ -76,17 +88,17 @@ struct AddressData: Decodable {
     let okato: String?
     let oktmo: String?
     let timezone: String?
-    let geo_lat: String?
-    let geo_lon: String?
-    let metro: [Metro]?
+    let geo_lat: String?            // Широта
+    let geo_lon: String?            // Долгота
+    let metro: [Metro]?             // Метро, если есть
     let qcGeo: String?
 }
 
 // MARK: - Metro
-struct Metro: Decodable {
-    let name: String?
-    let line: String?
-    let distance: Double?
+struct Metro: Decodable {       // Метро
+    let name: String?           // Название станции
+    let line: String?           // Линия
+    let distance: Double?       // Расстояние до
 }
 
 // MARK: - Management
@@ -119,8 +131,16 @@ struct State: Decodable {
                                     BANKRUPT     — банкротство
                                     REORGANIZING — в процессе присоединения к другому юрлицу, с последующей ликвидацией */
     
-    let actuality_date: Double?    // дата последних изменений
-    let registration_date: Double? // дата регистрации
-    let liquidation_date: Double?  // дата ликвидации
+    var description: String {
+        guard let status = status else { return "нет данных" }
+        switch status {
+        case "ACTIVE": return "действующее"
+        case "LIQUIDATING": return "ликвидируется"
+        case "LIQUIDATED": return "ликвидировано"
+        case "REORGANIZING": return "в процессе реорганизации"
+        default: return "нет данных"
+        }
+        
+    }
 }
 

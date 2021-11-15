@@ -17,6 +17,7 @@
 		7C5C30EB25EEA91F008333EB /* CompanyListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5C30EA25EEA91F008333EB /* CompanyListViewController.swift */; };
 		7C8E5F99273ED8B900484278 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E5F98273ED8B900484278 /* Constants.swift */; };
 		7C8E5F9E274055D300484278 /* CompanyDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E5F9D274055D300484278 /* CompanyDetailsViewController.swift */; };
+		7C8E5FA327427D3100484278 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8E5FA227427D3000484278 /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		7C5C30EA25EEA91F008333EB /* CompanyListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyListViewController.swift; sourceTree = "<group>"; };
 		7C8E5F98273ED8B900484278 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7C8E5F9D274055D300484278 /* CompanyDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyDetailsViewController.swift; sourceTree = "<group>"; };
+		7C8E5FA227427D3000484278 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				7C5C30EA25EEA91F008333EB /* CompanyListViewController.swift */,
 				7C8E5F9D274055D300484278 /* CompanyDetailsViewController.swift */,
+				7C8E5FA227427D3000484278 /* MapViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -212,6 +215,7 @@
 				7C8E5F9E274055D300484278 /* CompanyDetailsViewController.swift in Sources */,
 				7C5C30EB25EEA91F008333EB /* CompanyListViewController.swift in Sources */,
 				7C8E5F99273ED8B900484278 /* Constants.swift in Sources */,
+				7C8E5FA327427D3100484278 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
