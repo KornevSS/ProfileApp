@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2GS-lS-zZZ">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="722"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="UV5-yK-xIq" detailTextLabel="4k0-YH-xNO" imageView="ICd-Lm-1TG" style="IBUITableViewCellStyleSubtitle" id="PpD-dA-SnD">
@@ -88,7 +88,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sHj-XY-C14">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sHj-XY-C14">
                                 <rect key="frame" x="16" y="171" width="382" height="548"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -100,11 +100,17 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zic-Qv-6Vq">
-                                <rect key="frame" x="124" y="774" width="161" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Показать на карте"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zic-Qv-6Vq">
+                                <rect key="frame" x="128" y="774" width="158" height="49"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="BfT-Hb-m88"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="mappin.and.ellipse" catalog="system" symbolScale="large"/>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="bold"/>
+                                </state>
                                 <connections>
                                     <segue destination="reX-tW-OMx" kind="presentation" identifier="showMapVC" id="OXS-M3-kkj"/>
                                 </connections>
@@ -114,7 +120,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sHj-XY-C14" firstAttribute="leading" secondItem="xdk-pz-0ir" secondAttribute="leading" constant="16" id="HZw-QK-Uhu"/>
+                            <constraint firstItem="Zic-Qv-6Vq" firstAttribute="centerX" secondItem="HoF-XF-uO6" secondAttribute="centerX" id="MzU-vY-yoQ"/>
+                            <constraint firstItem="Zic-Qv-6Vq" firstAttribute="leading" secondItem="xdk-pz-0ir" secondAttribute="leading" constant="128" id="NLI-s2-nNs"/>
+                            <constraint firstItem="xdk-pz-0ir" firstAttribute="bottom" secondItem="Zic-Qv-6Vq" secondAttribute="bottom" constant="39" id="YH8-vk-Ver"/>
+                            <constraint firstItem="Zic-Qv-6Vq" firstAttribute="top" secondItem="sHj-XY-C14" secondAttribute="bottom" constant="55" id="fgb-fq-oPL"/>
                             <constraint firstItem="xdk-pz-0ir" firstAttribute="trailing" secondItem="sHj-XY-C14" secondAttribute="trailing" constant="16" id="jM5-zA-d6m"/>
+                            <constraint firstItem="xdk-pz-0ir" firstAttribute="trailing" secondItem="Zic-Qv-6Vq" secondAttribute="trailing" constant="128" id="pIk-Us-sUt"/>
+                            <constraint firstItem="sHj-XY-C14" firstAttribute="top" secondItem="xdk-pz-0ir" secondAttribute="top" constant="31" id="vRn-BO-528"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="kp7-PW-IN3"/>
@@ -129,7 +141,6 @@
         <!--Navigation Controller-->
         <scene sceneID="DoN-Uc-ddx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BCV-78-FzK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="isP-II-474" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="Rrd-bJ-7ib">
@@ -141,6 +152,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="h1A-hy-MGb"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BCV-78-FzK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1894" y="-118"/>
         </scene>
@@ -155,30 +167,53 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="9LU-XJ-xfp">
                                 <rect key="frame" x="0.0" y="120" width="414" height="722"/>
                             </mapView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Координаты на карте:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPg-eO-SCe">
-                                <rect key="frame" x="20" y="20" width="188" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Широта:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmC-OM-rKT">
-                                <rect key="frame" x="20" y="49" width="67" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Долгота:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8f-lP-scq">
-                                <rect key="frame" x="20" y="78" width="70" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uf-OT-lAs">
-                                <rect key="frame" x="327" y="36" width="67" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sQn-b5-p7T">
+                                <rect key="frame" x="16" y="20" width="188" height="77.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Координаты на карте:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPg-eO-SCe">
+                                        <rect key="frame" x="0.0" y="0.0" width="188" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="XNL-S0-ayG">
+                                        <rect key="frame" x="0.0" y="28.5" width="188" height="20.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Широта:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XmC-OM-rKT">
+                                                <rect key="frame" x="0.0" y="0.0" width="94" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="###" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKY-9P-ipk">
+                                                <rect key="frame" x="94" y="0.0" width="94" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="yP1-YQ-zlS">
+                                        <rect key="frame" x="0.0" y="57" width="188" height="20.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Долгота:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R8f-lP-scq">
+                                                <rect key="frame" x="0.0" y="0.0" width="94" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="###" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xn3-fR-dyb">
+                                                <rect key="frame" x="94" y="0.0" width="94" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1uf-OT-lAs">
+                                <rect key="frame" x="264" y="37" width="134" height="50"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal">
                                     <imageReference key="image" image="arrow.right.doc.on.clipboard" catalog="system" symbolScale="large"/>
@@ -188,10 +223,16 @@
                         <viewLayoutGuide key="safeArea" id="Gtk-HE-1Wg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="sQn-b5-p7T" firstAttribute="top" secondItem="Gtk-HE-1Wg" secondAttribute="top" constant="20" id="77g-OH-D3N"/>
+                            <constraint firstItem="9LU-XJ-xfp" firstAttribute="top" secondItem="1uf-OT-lAs" secondAttribute="bottom" constant="33" id="Dfh-5R-gRK"/>
+                            <constraint firstItem="sQn-b5-p7T" firstAttribute="leading" secondItem="Gtk-HE-1Wg" secondAttribute="leading" constant="16" id="Flg-mb-ruR"/>
                             <constraint firstItem="9LU-XJ-xfp" firstAttribute="leading" secondItem="Gtk-HE-1Wg" secondAttribute="leading" id="GPc-62-SdU"/>
-                            <constraint firstItem="9LU-XJ-xfp" firstAttribute="top" secondItem="Gtk-HE-1Wg" secondAttribute="top" constant="120" id="LVs-Mw-pSR"/>
+                            <constraint firstItem="9LU-XJ-xfp" firstAttribute="top" secondItem="yP1-YQ-zlS" secondAttribute="bottom" constant="22.5" id="JEQ-gk-dug"/>
                             <constraint firstAttribute="bottom" secondItem="9LU-XJ-xfp" secondAttribute="bottom" id="Tit-cf-bdj"/>
+                            <constraint firstItem="1uf-OT-lAs" firstAttribute="leading" secondItem="sQn-b5-p7T" secondAttribute="trailing" constant="60" id="Z4J-s2-GfI"/>
                             <constraint firstItem="Gtk-HE-1Wg" firstAttribute="trailing" secondItem="9LU-XJ-xfp" secondAttribute="trailing" id="ccJ-Ub-cnJ"/>
+                            <constraint firstItem="Gtk-HE-1Wg" firstAttribute="trailing" secondItem="1uf-OT-lAs" secondAttribute="trailing" constant="16" id="lj7-8g-zG6"/>
+                            <constraint firstItem="1uf-OT-lAs" firstAttribute="top" secondItem="Gtk-HE-1Wg" secondAttribute="top" constant="37" id="vHn-GC-xMp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="aR6-LG-cMm"/>
@@ -201,12 +242,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1e8-tF-iuj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="321.73913043478262" y="-119.19642857142857"/>
+            <point key="canvasLocation" x="445" y="-119"/>
         </scene>
     </scenes>
     <resources>
         <image name="arrow.right.doc.on.clipboard" catalog="system" width="116" height="128"/>
         <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
+        <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
