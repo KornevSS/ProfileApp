@@ -38,6 +38,9 @@ class MapViewController: UIViewController {
     
     @IBAction func copyToClipboardButtonClick() {
         UIPasteboard.general.string = "\(latitudeString) \(longitudeString)"
+    }
+    
+    @IBAction func openAppleMaps() {
         openInAppleMaps()
     }
     
