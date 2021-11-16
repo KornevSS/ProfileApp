@@ -36,7 +36,9 @@ class NetworkManager {
             }
             guard let data = data else { return }
             do {
-                let result = try JSONDecoder().decode(DataResponse.self, from: data)
+                let decoder = JSONDecoder()
+                decoder.dateDecodingStrategy = .iso8601
+                let result = try decoder.decode(DataResponse.self, from: data)
                 DispatchQueue.main.async {
                     let companies = result.suggestions
                     guard let companiesCount = companies?.count else { return }

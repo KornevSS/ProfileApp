@@ -17,13 +17,13 @@ class MapViewController: UIViewController {
     var company: Suggestion!
 
     private var latitudeString: String {
-        guard let latitude = company.data?.address?.data?.geo_lat else { return "0.0" }
+        guard let latitude = company.data?.address?.data?.geoLatitude else { return "0.0" }
         return latitude
     }
     
     private var longitudeString: String {
-        guard let latitude = company.data?.address?.data?.geo_lon else { return "0.0" }
-        return latitude
+        guard let longitude = company.data?.address?.data?.geoLongitude else { return "0.0" }
+        return longitude
     }
 
     override func viewDidLoad() {
@@ -46,7 +46,7 @@ class MapViewController: UIViewController {
     
     private func setLocation() {
         initMap { location, region in
-            let destinationTitle = self.company.data?.name?.full_with_opf
+            let destinationTitle = self.company.data?.name?.fullWithOpf
             let destinationSubTitle = self.company.data?.address?.value
             self.mapView.setRegion(region, animated: true)
             let destinationAnnotation = MKPointAnnotation()
@@ -65,7 +65,7 @@ class MapViewController: UIViewController {
             ]
             let placemark = MKPlacemark(coordinate: location, addressDictionary: nil)
             let mapItem = MKMapItem(placemark: placemark)
-            mapItem.name = self.company.data?.name?.full_with_opf
+            mapItem.name = self.company.data?.name?.fullWithOpf
             mapItem.openInMaps(launchOptions: options)
         }
     }
