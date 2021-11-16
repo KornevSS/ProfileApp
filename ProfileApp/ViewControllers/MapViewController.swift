@@ -40,26 +40,48 @@ class MapViewController: UIViewController {
         UIPasteboard.general.string = "\(latitudeString) \(longitudeString)"
     }
     
-    private func fillingLabels() {
-        latitudeLabel.text = latitudeString
-        longitudeLabel.text = longitudeString
+    @IBAction func openAppleMaps() {
+        openInAppleMaps()
     }
     
     private func setLocation() {
+        initMap { location, region in
+            let destinationTitle = self.company.data?.name?.full_with_opf
+            let destinationSubTitle = self.company.data?.address?.value
+            self.mapView.setRegion(region, animated: true)
+            let destinationAnnotation = MKPointAnnotation()
+            destinationAnnotation.title = destinationTitle
+            destinationAnnotation.subtitle = destinationSubTitle
+            destinationAnnotation.coordinate = location
+            self.mapView.addAnnotation(destinationAnnotation)
+        }
+    }
+    
+    private func openInAppleMaps() {
+        initMap { location, region in
+            let options = [
+                MKLaunchOptionsMapCenterKey: NSValue(mkCoordinate: region.center),
+                MKLaunchOptionsMapSpanKey: NSValue(mkCoordinateSpan: region.span)
+            ]
+            let placemark = MKPlacemark(coordinate: location, addressDictionary: nil)
+            let mapItem = MKMapItem(placemark: placemark)
+            mapItem.name = self.company.data?.name?.full_with_opf
+            mapItem.openInMaps(launchOptions: options)
+        }
+    }
+    
+    private func initMap(completion: @escaping (CLLocationCoordinate2D, MKCoordinateRegion) -> Void) {
         guard let latitudeDouble = Double(latitudeString) else { return }
         guard let longitudeDouble = Double(longitudeString) else { return }
-        
         let location = CLLocationCoordinate2DMake(latitudeDouble, longitudeDouble)
         let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
         let region = MKCoordinateRegion(center: location, span: span)
-
-        mapView.setRegion(region, animated: true)
-
-        let destinationAnnotation = MKPointAnnotation()
-        destinationAnnotation.title = company.data?.name?.full_with_opf
-        destinationAnnotation.subtitle = company.data?.address?.value
-        destinationAnnotation.coordinate = location
-        mapView.addAnnotation(destinationAnnotation)
+        completion(location, region)
+    }
+    
+    private func fillingLabels() {
+        latitudeLabel.text = latitudeString
+        longitudeLabel.text = longitudeString
     }
     
 }
