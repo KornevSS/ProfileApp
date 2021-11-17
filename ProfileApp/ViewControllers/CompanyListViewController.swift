@@ -96,26 +96,3 @@ extension CompanyListViewController: UISearchBarDelegate {
     }
     
 }
-
-// MARK: - Alert
-
-//extension NewCompanyViewController {
-//
-//    private func alert(completionHandler: @escaping () -> Void, title: String, message: String) {
-//        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-//        let action = UIAlertAction(title: "OK", style: .default) {_ in
-//            completionHandler()
-//        }
-//        alert.addAction(action)
-//        present(alert, animated: true)
-//    }
-//
-//    private func successAlert(completionHandler: @escaping () -> Void) {
-//        alert(completionHandler: completionHandler, title: "Успешная загрузка ✅", message: "Добавлено в историю поиска")
-//    }
-//
-//    private func failedAlert(completionHandler: @escaping () -> Void) {
-//        alert(completionHandler: completionHandler, title: "Компания не найдена 🚫", message: "Введите корректный запрос")
-//    }
-//
-//}

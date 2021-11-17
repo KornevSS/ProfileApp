@@ -37,7 +37,9 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func copyToClipboardButtonClick() {
-        UIPasteboard.general.string = "\(latitudeString) \(longitudeString)"
+        copeToClipboardSuccessAlert {
+            UIPasteboard.general.string = "\(self.latitudeString) \(self.longitudeString)"
+        }
     }
     
     @IBAction func openAppleMaps() {
@@ -84,4 +86,23 @@ class MapViewController: UIViewController {
         longitudeLabel.text = longitudeString
     }
     
+}
+
+// MARK: - Alert
+
+extension MapViewController {
+
+    private func alert(completionHandler: @escaping () -> Void, title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default) {_ in
+            completionHandler()
+        }
+        alert.addAction(action)
+        present(alert, animated: true)
+    }
+
+    private func copeToClipboardSuccessAlert(completionHandler: @escaping () -> Void) {
+        alert(completionHandler: completionHandler, title: "Буфер обмена", message: "Координаты скопированы ✅")
+    }
+
 }
