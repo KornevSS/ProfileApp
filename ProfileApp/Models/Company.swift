@@ -1,6 +1,6 @@
 //
-//  CompanyV2.swift
-//  CompanyV2
+//  Company.swift
+//  Company
 //
 //  Created by Сергей Корнев on 01.08.2021.
 //
@@ -199,9 +199,9 @@ struct State: Codable {
     var description: String {
         guard let status = status else { return "" }
         switch status {
-        case "ACTIVE": return "действующее, дата регистрации: \(Date(milliseconds: actualityDate ?? 0))"
+        case "ACTIVE": return "действующее, дата регистрации: \(Date(milliseconds: actualityDate ?? 0).dateCompactString)"
         case "LIQUIDATING": return "ликвидируется"
-        case "LIQUIDATED": return "ликвидировано, дата ликвидации: \(Date(milliseconds: liquidationDate ?? 0))"
+        case "LIQUIDATED": return "ликвидировано, дата ликвидации: \(Date(milliseconds: liquidationDate ?? 0).dateCompactString)"
         case "BANKRUPT": return "банкрот"
         case "REORGANIZING": return "в процессе реорганизации"
         default: return "нет данных"
